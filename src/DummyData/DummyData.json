@@ -1,0 +1,14 @@
+{
+  "data": [
+    { "blNumber": "BL1234567", "status": "Arrived depot" },
+    { "blNumber": "BL1999997", "status": "Onboard" },
+    { "blNumber": "BL0090909", "status": "Pending" },
+    { "blNumber": "BL1993209", "status": "Arrived depot" },
+    { "blNumber": "BL1399288", "status": "Onboard" },
+    { "blNumber": "BL0928283", "status": "Pending" },
+    { "blNumber": "BL7384992", "status": "Onboard" },
+    { "blNumber": "BL0183772", "status": "Arrived depot" },
+    { "blNumber": "BL9387722", "status": "Pending" }
+  ],
+  "onboardCount": 3
+}
