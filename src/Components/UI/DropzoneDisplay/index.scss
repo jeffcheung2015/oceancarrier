@@ -1,0 +1,29 @@
+.div-dropzoneDisplay-wrapper{
+  display: inline-flex;
+  width: 100%;
+  height: 100%;
+
+  .div-dropzoneRegion{
+    border: 2px solid #000;
+    border-radius: 10px;
+    width: 50%;
+    height: 100%;
+    margin-right: 10px;
+    box-sizing: 'border-box'
+  }
+
+  .div-fileList{
+    overflow-y: scroll;
+    width: 50%;
+    margin-left: 10px;
+    box-sizing: 'border-box'
+  }
+
+  .div-dropzone-text{
+    position: relative;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    text-align: center;
+  }
+}

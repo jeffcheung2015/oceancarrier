@@ -18,13 +18,13 @@ class Dashboard extends React.Component{
       <div className="div-dashboard-wrapper">
         <Grid container spacing={3}>
 
-          <Grid item xs={12} sm={8} md={8} lg={8}>
+          <Grid item xs={12} sm={7} md={7} lg={7}>
             <SearchCriteria
 
             />
           </Grid>
 
-          <Grid item xs={12} sm={4} md={4} lg={4}>
+          <Grid item xs={12} sm={5} md={5} lg={5}>
             <InfoDisplay
               infoLabel={'Number of Onboard Shipment'}
               countInfo={onboardCount}

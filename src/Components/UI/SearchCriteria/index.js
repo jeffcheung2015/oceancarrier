@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import "./index.scss"
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/styles';
 import { pure, compose } from 'recompose'
-import { Card, Select, Grid, TextField, MenuItem } from '@material-ui/core'
+import { Card, Select, Grid, TextField, Button, MenuItem } from '@material-ui/core'
 import _map from 'lodash/map'
+import _set from 'lodash/set'
+import { makeStyles } from '@material-ui/core/styles'
 
-const overrideStyles = theme => ({
+const useStyles = makeStyles(theme => ({
   textFieldRoot: {
     position: 'relative',
     top: '50%',
@@ -17,15 +18,27 @@ const overrideStyles = theme => ({
     top: '50%',
     width: '200px',
     textAlign: 'left'
+  },
+  buttonRoot: {
+    textTransform: 'none',
+    background: '#bdb6b6',
+    width: '225px',
+    marginBottom: '20px'
   }
-})
+}))
 
 const SearchCriteria = (props) => {
-  const {
-    currBlNumber, currStatus,
-    classes,
-    onTextFieldChange, onSelectChange
-  } = props
+  const classes = useStyles();
+  const [blNumbers, setBlNumbers] = React.useState('')
+  const [status, setStatus] = React.useState(-1)
+
+  const onButtonClick = () => {
+    const blNumbersArr = blNumbers.split(',')
+
+    console.log('status, blNumbers', status, blNumbers)
+  }
+  const onTextFieldChange = (e) => setBlNumbers(e.target.value)
+  const onSelectChange = (e) => setStatus(e.target.value)
 
   return(
     <Card className="Card-searchCriteria-wrapper">
@@ -35,10 +48,10 @@ const SearchCriteria = (props) => {
             root: classes.textFieldRoot
           }}
           onChange={onTextFieldChange}
-          name='blNumber'
+          name='blNumbers'
           placeholder='Bl Number'
           defaultValue=''
-          values={currBlNumber}
+          values={blNumbers}
         />
       </div>
       <div className="div-criteriaField-wrapper">
@@ -48,29 +61,32 @@ const SearchCriteria = (props) => {
           }}
           onChange={onSelectChange}
           name='status'
-          defaultValue=''
-          value={currStatus}
+          defaultValue={-1}
+          value={status}
           displayEmpty
         >
-          <MenuItem disabled value=''>Status</MenuItem>
+          <MenuItem disabled value={-1}>Status</MenuItem>
           {
-            _map(['Submitted', 'Pending', 'Onboard'], (elem, idx) => (
-              <MenuItem key={`menuItem-${idx}`} value={idx}>{elem}</MenuItem>
-            ))
+            _map(['Arrived Depot', 'Delivered', 'Onboard'], (elem, idx) => {
+              return (
+                <MenuItem key={`menuItem-${idx}`} value={idx}>{elem}</MenuItem>
+              )
+            })
           }
         </Select>
       </div>
+      <Button
+        classes={{
+          root: classes.buttonRoot
+        }}
+        onClick={onButtonClick}
+      >
+        Search
+      </Button>
     </Card>
   )
 }
-export default compose(
-  withStyles(overrideStyles),
-  pure
-)(SearchCriteria);
+export default SearchCriteria;
 
 SearchCriteria.protoTypes = {
-  currBlNumber: PropTypes.string,
-  currStatus: PropTypes.number,
-  onTextFieldChange: PropTypes.func.isRequired,
-  onSelectChange: PropTypes.func.isRequired
 }

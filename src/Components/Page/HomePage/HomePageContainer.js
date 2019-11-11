@@ -5,7 +5,6 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import HomePage from './HomePage'
 import DummyData from 'DummyData/DummyData.json'
-
 class HomePageContainer extends React.Component{
   state = {
     data: [],

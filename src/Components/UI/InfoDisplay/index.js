@@ -16,8 +16,10 @@ const InfoDisplay = (props) => {
 
   return(
     <Card className="Card-infoDisplay-wrapper">
-      <Typography variant="subtitle1">{infoLabel}</Typography>
-      <Typography variant="h1">{countInfo}</Typography>
+      <div className="div-infoTypography-wrapper">
+        <Typography variant="subtitle1">{infoLabel}</Typography>
+        <Typography variant="h1">{countInfo}</Typography>
+      </div>
     </Card>
   )
 }
