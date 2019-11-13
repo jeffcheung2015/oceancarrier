@@ -2,7 +2,7 @@ import _assign from "lodash/assign";
 import * as type from 'Reducer/ReducerType';
 
 const initState = {
-  isLogin: true
+  isLogin: false
 }
 
 export const userReducer = (state = initState, action) => {
@@ -18,5 +18,4 @@ export const userReducer = (state = initState, action) => {
     default:
       return state
   }
-
 }

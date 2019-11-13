@@ -2,12 +2,7 @@ import React, { Component } from 'react';
 import "./index.scss"
 import PropTypes from 'prop-types';
 import { Card, Typography } from '@material-ui/core'
-import { withStyles } from '@material-ui/styles';
 import { pure, compose } from 'recompose'
-
-const overrideStyles = theme => ({
-
-})
 
 const InfoDisplay = (props) => {
   const {
@@ -23,10 +18,7 @@ const InfoDisplay = (props) => {
     </Card>
   )
 }
-export default compose(
-  withStyles(overrideStyles),
-  pure
-)(InfoDisplay);
+export default React.memo(InfoDisplay);
 
 InfoDisplay.protoTypes = {
   infoLabel: PropTypes.string.isRequired,

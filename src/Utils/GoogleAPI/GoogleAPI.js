@@ -6,13 +6,14 @@ const SCOPES = ['https://www.googleapis.com/auth/drive.file'];
 const CRED_PATH = 'credentials.json'
 const TOKEN_PATH = 'token.json';
 
-// Load client secrets from a local file.
-fs.readFile(CRED_PATH, (err, content) => {
-  if (err) return console.log('Error loading client secret file:', err);
-  console.log("##############", readline)
-  // Authorize a client with credentials, then call the Google Drive API.
-  authorize(JSON.parse(content), listFiles);
-});
+function readFile(){
+  // Load client secrets from a local file.
+  fs.readFile(CRED_PATH, (err, content) => {
+    if (err) return console.log('Error loading client secret file:', err);
+    // Authorize a client with credentials, then call the Google Drive API.
+    authorize(JSON.parse(content), uploadFile);
+  });
+}
 
 /**
  * Create an OAuth2 client with the given credentials, and then execute the
@@ -85,4 +86,27 @@ function listFiles(auth) {
       console.log('No files found.');
     }
   });
+}
+
+function uploadFile(auth) {
+    const drive = google.drive({ version: 'v3', auth });
+    var fileMetadata = {
+        'name': 'images.jpeg'
+    };
+    var media = {
+        mimeType: 'image/jpeg',
+        body: fs.createReadStream('images.jpeg')
+    };
+    drive.files.create({
+        resource: fileMetadata,
+        media: media,
+        fields: 'id'
+    }, function (err, res) {
+        if (err) {
+            // Handle error
+            console.log(err);
+        } else {
+            console.log('File Id: ', res.data.id);
+        }
+    });
 }

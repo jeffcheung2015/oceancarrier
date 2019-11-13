@@ -1664,6 +1664,10 @@ arrify@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/arrify/-/arrify-1.0.1.tgz#898508da2226f380df904728456849c1501a4b0d"
 
+arrify@^2.0.0:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/arrify/-/arrify-2.0.1.tgz#c9655e9331e0abcd588d2a7cad7e9956f66701fa"
+
 asap@~2.0.3, asap@~2.0.6:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/asap/-/asap-2.0.6.tgz#e50347611d7e690943208bbdafebcbc2fb866d46"
@@ -4058,13 +4062,14 @@ gauge@~2.7.3:
     strip-ansi "^3.0.1"
     wide-align "^1.1.0"
 
-gaxios@^1.0.2, gaxios@^1.0.4, gaxios@^1.2.1, gaxios@^1.2.2:
-  version "1.8.4"
-  resolved "https://registry.yarnpkg.com/gaxios/-/gaxios-1.8.4.tgz#e08c34fe93c0a9b67a52b7b9e7a64e6435f9a339"
+gaxios@^2.0.1, gaxios@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/gaxios/-/gaxios-2.1.0.tgz#b5d04ec19bf853d4589ccc2e7d61f0f2ab62afee"
   dependencies:
     abort-controller "^3.0.0"
     extend "^3.0.2"
-    https-proxy-agent "^2.2.1"
+    https-proxy-agent "^3.0.0"
+    is-stream "^2.0.0"
     node-fetch "^2.3.0"
 
 gaze@^1.0.0:
@@ -4073,11 +4078,11 @@ gaze@^1.0.0:
   dependencies:
     globule "^1.0.0"
 
-gcp-metadata@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/gcp-metadata/-/gcp-metadata-1.0.0.tgz#5212440229fa099fc2f7c2a5cdcb95575e9b2ca6"
+gcp-metadata@^3.2.0:
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/gcp-metadata/-/gcp-metadata-3.2.1.tgz#6f702c91414f1f0ff53a8930af24d9466ace6070"
   dependencies:
-    gaxios "^1.0.2"
+    gaxios "^2.1.0"
     json-bigint "^0.3.0"
 
 get-caller-file@^1.0.1:
@@ -4199,44 +4204,42 @@ globule@^1.0.0:
     lodash "~4.17.10"
     minimatch "~3.0.2"
 
-google-auth-library@^3.0.0:
-  version "3.1.2"
-  resolved "https://registry.yarnpkg.com/google-auth-library/-/google-auth-library-3.1.2.tgz#ff2f88cd5cd2118a57bd3d5ad3c093c8837fc350"
+google-auth-library@^5.2.0:
+  version "5.5.1"
+  resolved "https://registry.yarnpkg.com/google-auth-library/-/google-auth-library-5.5.1.tgz#2bf5ade93cb9d00c860d3fb15798db33b39a53a7"
   dependencies:
+    arrify "^2.0.0"
     base64-js "^1.3.0"
     fast-text-encoding "^1.0.0"
-    gaxios "^1.2.1"
-    gcp-metadata "^1.0.0"
-    gtoken "^2.3.2"
-    https-proxy-agent "^2.2.1"
+    gaxios "^2.1.0"
+    gcp-metadata "^3.2.0"
+    gtoken "^4.1.0"
     jws "^3.1.5"
     lru-cache "^5.0.0"
-    semver "^5.5.0"
 
-google-p12-pem@^1.0.0:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/google-p12-pem/-/google-p12-pem-1.0.4.tgz#b77fb833a2eb9f7f3c689e2e54f095276f777605"
+google-p12-pem@^2.0.0:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/google-p12-pem/-/google-p12-pem-2.0.2.tgz#39cae8f6fcbe66a01f00be4ddf2d56b95926fa7b"
   dependencies:
-    node-forge "^0.8.0"
-    pify "^4.0.0"
+    node-forge "^0.9.0"
 
-googleapis-common@^0.7.0:
-  version "0.7.2"
-  resolved "https://registry.yarnpkg.com/googleapis-common/-/googleapis-common-0.7.2.tgz#a694f55d979cb7c2eac21a0e0439af12f9b418ba"
+googleapis-common@^3.1.0:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/googleapis-common/-/googleapis-common-3.1.1.tgz#387e75d914a3e09fec2cb3daf321e04194c8a379"
   dependencies:
-    gaxios "^1.2.2"
-    google-auth-library "^3.0.0"
-    pify "^4.0.0"
-    qs "^6.5.2"
+    extend "^3.0.2"
+    gaxios "^2.0.1"
+    google-auth-library "^5.2.0"
+    qs "^6.7.0"
     url-template "^2.0.8"
-    uuid "^3.2.1"
+    uuid "^3.3.2"
 
-googleapis@39:
-  version "39.2.0"
-  resolved "https://registry.yarnpkg.com/googleapis/-/googleapis-39.2.0.tgz#5c81f721e9da2e80cb0b25821ed60d3bc200c3da"
+googleapis@^45.0.0:
+  version "45.0.0"
+  resolved "https://registry.yarnpkg.com/googleapis/-/googleapis-45.0.0.tgz#27917682f1eee9502164384ceacdc08a17ba9ffb"
   dependencies:
-    google-auth-library "^3.0.0"
-    googleapis-common "^0.7.0"
+    google-auth-library "^5.2.0"
+    googleapis-common "^3.1.0"
 
 graceful-fs@^4.1.11, graceful-fs@^4.1.15, graceful-fs@^4.1.2, graceful-fs@^4.1.6, graceful-fs@^4.2.0:
   version "4.2.2"
@@ -4246,15 +4249,14 @@ growly@^1.3.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/growly/-/growly-1.3.0.tgz#f10748cbe76af964b7c96c93c6bcc28af120c081"
 
-gtoken@^2.3.2:
-  version "2.3.3"
-  resolved "https://registry.yarnpkg.com/gtoken/-/gtoken-2.3.3.tgz#8a7fe155c5ce0c4b71c886cfb282a9060d94a641"
+gtoken@^4.1.0:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/gtoken/-/gtoken-4.1.1.tgz#0455dc22981bf076cf7694094ed861ec21329b30"
   dependencies:
-    gaxios "^1.0.4"
-    google-p12-pem "^1.0.0"
+    gaxios "^2.1.0"
+    google-p12-pem "^2.0.0"
     jws "^3.1.5"
     mime "^2.2.0"
-    pify "^4.0.0"
 
 gud@^1.0.0:
   version "1.0.0"
@@ -4533,9 +4535,9 @@ https-browserify@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/https-browserify/-/https-browserify-1.0.0.tgz#ec06c10e0a34c0f2faf199f7fd7fc78fffd03c73"
 
-https-proxy-agent@^2.2.1:
-  version "2.2.4"
-  resolved "https://registry.yarnpkg.com/https-proxy-agent/-/https-proxy-agent-2.2.4.tgz#4ee7a737abd92678a293d9b34a1af4d0d08c787b"
+https-proxy-agent@^3.0.0:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/https-proxy-agent/-/https-proxy-agent-3.0.1.tgz#b8c286433e87602311b01c8ea34413d856a4af81"
   dependencies:
     agent-base "^4.3.0"
     debug "^3.1.0"
@@ -4957,6 +4959,10 @@ is-root@2.1.0:
 is-stream@^1.0.1, is-stream@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/is-stream/-/is-stream-1.1.0.tgz#12d4a3dd4e68e0b79ceb8dbc84173ae80d91ca44"
+
+is-stream@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/is-stream/-/is-stream-2.0.0.tgz#bde9c32680d6fae04129d6ac9d921ce7815f78e3"
 
 is-svg@^3.0.0:
   version "3.0.0"
@@ -5759,6 +5765,10 @@ load-json-file@^4.0.0:
     pify "^3.0.0"
     strip-bom "^3.0.0"
 
+load-script@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/load-script/-/load-script-1.0.0.tgz#0491939e0bee5643ee494a7e3da3d2bac70c6ca4"
+
 loader-fs-cache@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/loader-fs-cache/-/loader-fs-cache-1.0.2.tgz#54cedf6b727e1779fd8f01205f05f6e88706f086"
@@ -6254,9 +6264,9 @@ node-forge@0.9.0:
   version "0.9.0"
   resolved "https://registry.yarnpkg.com/node-forge/-/node-forge-0.9.0.tgz#d624050edbb44874adca12bb9a52ec63cb782579"
 
-node-forge@^0.8.0:
-  version "0.8.5"
-  resolved "https://registry.yarnpkg.com/node-forge/-/node-forge-0.8.5.tgz#57906f07614dc72762c84cef442f427c0e1b86ee"
+node-forge@^0.9.0:
+  version "0.9.1"
+  resolved "https://registry.yarnpkg.com/node-forge/-/node-forge-0.9.1.tgz#775368e6846558ab6676858a4d8c6e8d16c677b5"
 
 node-gyp@^3.8.0:
   version "3.8.0"
@@ -6862,7 +6872,7 @@ pify@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/pify/-/pify-3.0.0.tgz#e5a4acd2c101fdf3d9a4d07f0dbc4db49dd28176"
 
-pify@^4.0.0, pify@^4.0.1:
+pify@^4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/pify/-/pify-4.0.1.tgz#4b2cd25c50d598735c50292224fd8c6df41e3231"
 
@@ -7664,7 +7674,7 @@ qs@6.7.0:
   version "6.7.0"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.7.0.tgz#41dc1a015e3d581f1621776be31afb2876a9b1bc"
 
-qs@^6.5.2:
+qs@^6.7.0:
   version "6.9.1"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.9.1.tgz#20082c65cb78223635ab1a9eaca8875a29bf8ec9"
 
@@ -7814,6 +7824,12 @@ react-dropzone@^10.1.10:
 react-error-overlay@^6.0.3:
   version "6.0.3"
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-6.0.3.tgz#c378c4b0a21e88b2e159a3e62b2f531fd63bf60d"
+
+react-google-picker@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/react-google-picker/-/react-google-picker-0.1.0.tgz#f8a5a3ff7f48c99d1be35071f28a17d136ec0953"
+  dependencies:
+    load-script "^1.0.0"
 
 react-is@^16.6.0, react-is@^16.7.0, react-is@^16.8.6, react-is@^16.9.0:
   version "16.11.0"
@@ -9434,7 +9450,7 @@ utils-merge@1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/utils-merge/-/utils-merge-1.0.1.tgz#9f95710f50a267947b2ccc124741c1028427e713"
 
-uuid@^3.0.1, uuid@^3.2.1, uuid@^3.3.2, uuid@^3.3.3:
+uuid@^3.0.1, uuid@^3.3.2, uuid@^3.3.3:
   version "3.3.3"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.3.3.tgz#4568f0216e78760ee1dbf3a4d2cf53e224112866"
 

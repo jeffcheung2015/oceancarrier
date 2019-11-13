@@ -8,7 +8,6 @@ const NotFoundPage = (props) => (
   </div>
 )
 
-
 export default NotFoundPage;
 
 NotFoundPage.protoTypes = {

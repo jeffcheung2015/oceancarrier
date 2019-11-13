@@ -9,25 +9,21 @@ const useStyles = makeStyles(theme => ({
     animationDuration: '0.4s'
   }
 }))
-
 const Loader = () => {
   const classes = useStyles()
-
   return(
     <div className="div-loader-wrapper">
       <div className="div-loader-cover"/>
       <div className="div-circularProgress-wrapper">
         <CircularProgress
-          classes={{
-            root: classes.root
-          }}
+          classes={{ root: classes.root }}
         />
       </div>
     </div>
   )
 }
 
-export default Loader;
+export default React.memo(Loader)
 
 Loader.protoTypes = {
 }

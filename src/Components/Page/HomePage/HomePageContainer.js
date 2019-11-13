@@ -4,25 +4,12 @@ import { compose } from 'recompose';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import HomePage from './HomePage'
-import DummyData from 'DummyData/DummyData.json'
-class HomePageContainer extends React.Component{
-  state = {
-    data: [],
-    onboardCount: 0
-  }
 
-  async componentDidMount(){
-    // to be replaced
-    await this.setState({
-      data: DummyData.data,
-      onboardCount: DummyData.onboardCount
-    })
-  }
+class HomePageContainer extends React.Component{
 
   render(){
     return(
       <HomePage
-        {...this.state}
         {...this.props}
       />
     )

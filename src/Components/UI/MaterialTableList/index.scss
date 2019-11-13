@@ -1,10 +1,11 @@
 .Card-materialTable-wrapper{
 
 }
-.div-uploadDocument-modal{
+.div-uploadDocument-modal, .div-updateShipment-modal{
   width: 600px;
   height: 400px;
-
+  .div-updateShipmentField{
+  }
 }
 
 .Select-materialTable{

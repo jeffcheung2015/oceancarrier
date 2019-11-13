@@ -1,6 +1,5 @@
 import * as type from 'Reducer/ReducerType';
 
-
 export const userLogin = () =>{
   return (dispatch) => {
     dispatch({
@@ -8,7 +7,6 @@ export const userLogin = () =>{
       isLogin: true
     })
   }
-
 }
 
 export const userLogout = () =>{
@@ -18,5 +16,4 @@ export const userLogout = () =>{
       isLogin: false
     })
   }
-
 }

@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component, useState, useCallback } from 'react';
 import "./index.scss"
 import PropTypes from 'prop-types';
 import { pure, compose } from 'recompose'
 import { Card, Select, Grid, TextField, Button, MenuItem } from '@material-ui/core'
 import _map from 'lodash/map'
 import _set from 'lodash/set'
+import _forEach from 'lodash/forEach'
 import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles(theme => ({
@@ -29,43 +30,60 @@ const useStyles = makeStyles(theme => ({
 
 const SearchCriteria = (props) => {
   const classes = useStyles();
-  const [blNumbers, setBlNumbers] = React.useState('')
-  const [status, setStatus] = React.useState(-1)
+  const {
+    data,
+    updateQueryData, setIsDirtyCriteria
+  } = props
 
-  const onButtonClick = () => {
+  const [blNumbers, setBlNumbers] = useState('')
+  const [status, setStatus] = useState(-1)
+
+  const onButtonClick = useCallback(() => {
+    let [isBlNumbersDirty, isStatusDirty] = [blNumbers !== '', status !== -1]
+    if(blNumbers === '' && status === -1){
+      setIsDirtyCriteria(false)
+      return
+    }
     const blNumbersArr = blNumbers.split(',')
+    let newQueryData = []
+    _forEach(data, (elem, idx) => {
+      let blNumberMatch = blNumbersArr.indexOf(elem.blNumber) !== -1
+      let statusMatch = status === elem.status
 
-    console.log('status, blNumbers', status, blNumbers)
-  }
-  const onTextFieldChange = (e) => setBlNumbers(e.target.value)
-  const onSelectChange = (e) => setStatus(e.target.value)
+      let cond1 = (isBlNumbersDirty && !isStatusDirty && blNumberMatch)
+      let cond2 = (!isBlNumbersDirty && isStatusDirty && statusMatch)
+      let cond3 = (isBlNumbersDirty && isStatusDirty && blNumberMatch && statusMatch)
+      if (cond1 || cond2 || cond3){
+        newQueryData.push(elem)
+      }
+    })
+    setIsDirtyCriteria(true)
+    updateQueryData(newQueryData)
+  }, [
+    blNumbers, status, data, setIsDirtyCriteria, updateQueryData
+  ])
 
   return(
     <Card className="Card-searchCriteria-wrapper">
       <div className="div-criteriaField-wrapper">
         <TextField
-          classes={{
-            root: classes.textFieldRoot
-          }}
-          onChange={onTextFieldChange}
+          classes={{root: classes.textFieldRoot }}
+          onChange={(e) => setBlNumbers(e.target.value)}
           name='blNumbers'
           placeholder='Bl Number'
-          defaultValue=''
-          values={blNumbers}
+          value={blNumbers}
         />
       </div>
       <div className="div-criteriaField-wrapper">
         <Select
-          classes={{
-            root: classes.selectRoot
-          }}
-          onChange={onSelectChange}
+          classes={{ root: classes.selectRoot }}
+          onChange={(e) => setStatus(e.target.value)}
           name='status'
           defaultValue={-1}
           value={status}
           displayEmpty
         >
-          <MenuItem disabled value={-1}>Status</MenuItem>
+          <MenuItem value={-1}>Status</MenuItem>
           {
             _map(['Arrived Depot', 'Delivered', 'Onboard'], (elem, idx) => {
               return (
@@ -75,12 +93,7 @@ const SearchCriteria = (props) => {
           }
         </Select>
       </div>
-      <Button
-        classes={{
-          root: classes.buttonRoot
-        }}
-        onClick={onButtonClick}
-      >
+      <Button classes={{ root: classes.buttonRoot }} onClick={onButtonClick}>
         Search
       </Button>
     </Card>
@@ -89,4 +102,7 @@ const SearchCriteria = (props) => {
 export default SearchCriteria;
 
 SearchCriteria.protoTypes = {
+  data: PropTypes.array.isRequired,
+  updateQueryData: PropTypes.func.isRequired,
+  setIsDirtyCriteria: PropTypes.func.isRequired,
 }

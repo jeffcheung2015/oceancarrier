@@ -1,6 +1,7 @@
-import React, { Component, useState, useCallback } from 'react';
+import React, { Component, useCallback } from 'react';
 import {useDropzone} from 'react-dropzone'
 import _forEach from 'lodash/forEach'
+import PropTypes from 'prop-types';
 import _map from 'lodash/map'
 import './index.scss'
 
@@ -15,19 +16,15 @@ const DropzoneDisplay = (props) => {
       const reader = new FileReader()
       reader.onloadend = () => {
         tmpFiles.push(file)
-        if(tmpFiles.length == acceptedFiles.length){
+        if(tmpFiles.length === acceptedFiles.length){
           setFiles(tmpFiles)
         }
       }
       reader.readAsArrayBuffer(file)
     })
+  }, [setFiles])
 
-  }, [])
-  console.log('!!', files)
   const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop})
-  // console.log('#### getRootProps:', getRootProps())
-  // console.log('@@@ getInputProps:', getInputProps())
-  // console.log('!!!isDragActive:', isDragActive)
   return (
     <div className="div-dropzoneDisplay-wrapper">
       <div className="div-dropzoneRegion" {...getRootProps()}>
@@ -36,7 +33,7 @@ const DropzoneDisplay = (props) => {
       </div>
       <div className="div-fileList">
         {
-          files.length == 0 ? (
+          files.length === 0 ? (
             <div className="div-fileName">No files</div>
           ) :
           _map(files, (file, idx) => <div key={`filename-${idx}`} className="div-fileName">{file.name}</div>)
@@ -49,4 +46,6 @@ const DropzoneDisplay = (props) => {
 export default DropzoneDisplay;
 
 DropzoneDisplay.protoTypes = {
+  files: PropTypes.array.isRequired,
+  setFiles: PropTypes.func.isRequired
 }

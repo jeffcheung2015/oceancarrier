@@ -8,6 +8,8 @@ import { ConnectedRouter } from 'connected-react-router';
 import { store, history } from 'Reducer/StoreConfig';
 
 function App() {
+  console.disableYellowBox = true;
+  
   return (
     <Provider store={store}>
       <div className="App">

@@ -10,10 +10,7 @@ const GlobalHeader = (props) => {
   )
 }
 
-
-
-export default GlobalHeader;
+export default React.memo(GlobalHeader)
 
 GlobalHeader.protoTypes = {
-  headerName: PropTypes.string.isRequired
 }
