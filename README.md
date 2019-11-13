@@ -1,7 +1,5 @@
 yarn</br>
 yarn start</br>
-</br>
-</br>
 in case node-sass module not found, run yarn add node-sass</br>
 </br>
 login page account password both are hardcoded</br>
